@@ -16,11 +16,11 @@ Midway through, my journey took a new turn: I landed a full-time role as a Payro
 ### Local Hardware Environment Bottlenecks
 Executing this scale of data transformation from scratch created severe processing constraints on my local machine. Running multiple data pipelines simultaneously pinned my browser thread execution memory to a sustained 89% utilization limit on a standard 8GB RAM setup. This resource wall forced me to optimize my development workflow: I completely stripped out heavy, multi-file data blending frameworks that were lagging my local drive and re-engineered my custom calculations—including the Workforce Slippage & Burnout Index (WSBI) and Overtime Premium Leaks—to run natively on a single master dataset string (`cleaned_localized_gss_data.csv`).
 
-### Tooling Choices
-The academic curriculum leaned heavily on R programming. I studied R enough to pass the Coursera requirements, but it never felt natural. As a process-driven engineer, I pivoted:
-*   **SQL (BigQuery)** for data cleaning and restructuring
-*   **Tableau** for visualization and storytelling
-*   **Python** as my long-term language of choice for automation, freelance consulting, and payroll systems architecture
+### Tooling Choices & Learning Roadmap
+The academic curriculum leaned heavily on R programming. I studied R enough to pass the Coursera requirements, but it never felt natural. As a process-driven engineer, I pivoted my strategy:
+*   **SQL (BigQuery):** Utilized exclusively for all core data cleaning, casting, normalization, and structural backend restructuring for this capstone.
+*   **Tableau Desktop:** Utilized exclusively for building interactive user dashboards, cross-filtering matrices, and visual storytelling layers.
+*   **Python (Future Track):** I did not utilize Python in this specific capstone project. However, having completed this certificate, I am focusing my upcoming learning energy on mastering Python as my long-term tool of choice for automated payroll systems architecture and freelance consulting.
 
 This project is both a technical capstone and a personal milestone—proof that resilience, clarity, and intentional design can turn career setbacks into opportunities for growth.
 
@@ -38,7 +38,7 @@ Traditional HR frameworks fail by merely reporting surface-level turnover headco
 
 ## 📈 2. Macroeconomic, Geopolitical, & Industry Anchor Benchmarks
 To ground this simulation in high-stakes operational realities, the data environment incorporates volatile market indicators and recent legislative updates:
-1.  **PSA Core Inflation & Geopolitical Shocks:** Mapped directly to the Philippine Statistics Authority (PSA) core benchmark pacing at **4.4%**. This baseline is heavily driven by **global oil price spikes stemming from ongoing Middle East conflicts (including the Iran geopolitical crisis)**, which has triggered cascading increases in local transport fares, tollways, and basic consumer goods.
+1.  **PSA Core Inflation & Geopolitical Shocks:** Mapped directly to the Philippine Statistics Authority (PSA) core benchmark pacing at **4.4%**. This baseline is heavily driven by global oil price spikes stemming from Middle East conflicts, which has triggered cascading increases in local transport fares, tollways, and basic consumer goods.
 2.  **Statutory Wage Compression Floor:** Calibrated against the active National Capital Region (NCR) minimum wage board adjustment, which integrated a **₱35.00 statutory daily hike**, lifting the non-agriculture market baseline floor to exactly **₱780.00/day**. This legislated increase compresses the premium gap separating specialized mid-tier corporate support bands from entry-level roles.
 3.  **Financial Index Conversion:** Mapped to the real-world Bangko Sentral ng Pilipinas (BSP) closing rate of **₱60.93 per US Dollar**.
 4.  **Operational Labor Divisor:** Calculated using the Monday-to-Friday DOLE 261-day annual factor, establishing a precise **174-hour monthly payroll divisor**.
@@ -110,4 +110,3 @@ Building an enterprise analytics framework from scratch introduces unexpected lo
 
 ### Conflict 1: BigQuery Schema Over-Optimization Error
 *   **The Problem:** The initial analytics summary query crashed inside the Google Cloud Sandbox console, throwing a strict syntax error: `No matching signature for operator = for argument types: BOOL, STRING`. 
-*   **The Cause:** BigQuery's automatic ingestion engine auto-detected the raw `Attrition` and `OverTime` columns as boolean checkbox values (`TRUE/FALSE`). The baseline code, however, processed them as standard string parameters (`'Yes'/'No'`), causing the server compiler to fail.
